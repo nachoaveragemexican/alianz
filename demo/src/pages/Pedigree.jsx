@@ -199,21 +199,22 @@ export default function Pedigree() {
               </div>
             </div>
 
-            {/* Footer with single large stamp bleeding up */}
-            <div className="bg-navy px-4 py-3 flex items-center justify-between relative overflow-visible rounded-b-2xl">
+            {/* Large stamp watermark — positioned on card, straddles footer */}
+            <img
+              src={img('images/seal-alianz.png')}
+              alt="Official Stamp"
+              className="absolute object-contain opacity-20 pointer-events-none"
+              crossOrigin="anonymous"
+              style={{ width: 200, height: 200, bottom: -40, right: -20, transform: 'rotate(-8deg)', zIndex: 10 }}
+            />
+
+            {/* Footer */}
+            <div className="bg-navy px-4 py-3 flex items-center justify-between rounded-b-2xl relative" style={{ zIndex: 5 }}>
               <div>
                 <p className="text-gold font-serif text-sm italic">Alianz</p>
                 <p className="text-gray-400 text-[9px]">Official Stamp</p>
               </div>
-              <div className="relative" style={{ width: 80, height: 48 }}>
-                <img
-                  src={img('images/seal-alianz.png')}
-                  alt="Official Stamp"
-                  className="absolute object-contain opacity-30"
-                  crossOrigin="anonymous"
-                  style={{ width: 480, height: 480, bottom: -180, right: -150, transform: 'rotate(-8deg)' }}
-                />
-              </div>
+              <div style={{ width: 80 }} />
             </div>
           </div>
 
