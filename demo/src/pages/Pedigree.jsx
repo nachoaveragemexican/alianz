@@ -1,6 +1,8 @@
+import { useRef, useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import Header from '../components/Header'
 import { img } from '../utils'
+import { Download, Share2, Loader2 } from 'lucide-react'
 
 const ancestors = [
   { name: 'Apollo', img: img('images/ancestor-1.jpg') },
@@ -12,6 +14,32 @@ const ancestors = [
 ]
 
 export default function Pedigree() {
+  const cardRef = useRef(null)
+  const [generating, setGenerating] = useState(false)
+
+  const downloadPdf = async () => {
+    if (!cardRef.current || generating) return
+    setGenerating(true)
+    try {
+      const html2canvas = (await import('html2canvas-pro')).default
+      const { jsPDF } = await import('jspdf')
+      const canvas = await html2canvas(cardRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+      })
+      const imgData = canvas.toDataURL('image/png')
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      const pdfWidth = pdf.internal.pageSize.getWidth()
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width
+      pdf.addImage(imgData, 'PNG', 0, 10, pdfWidth, pdfHeight)
+      pdf.save('Pedigree-CH-Maximus-Prince.pdf')
+    } catch (err) {
+      console.error(err)
+    }
+    setGenerating(false)
+  }
+
   return (
     <div className="h-full flex flex-col">
       <Header title="Pedigree Digital" showBack />
@@ -19,7 +47,7 @@ export default function Pedigree() {
       <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         <div className="px-4 pt-4 pb-6">
           {/* Certificate card */}
-          <div className="bg-white rounded-2xl card-shadow overflow-hidden">
+          <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden">
             {/* Top QR */}
             <div className="flex justify-between items-start p-4 pb-0">
               <div className="p-1 border-2 border-green-700 rounded-lg">
@@ -38,6 +66,7 @@ export default function Pedigree() {
                   src={img('images/dog-doberman.jpg')}
                   alt="CH. Maximus"
                   className="w-full h-48 object-cover"
+                  crossOrigin="anonymous"
                 />
               </div>
             </div>
@@ -84,6 +113,7 @@ export default function Pedigree() {
                       src={a.img}
                       alt={a.name}
                       className="w-12 h-12 rounded-full object-cover border-2 border-gold/30"
+                      crossOrigin="anonymous"
                     />
                     <span className="text-[10px] text-gray-500 mt-1">{a.name}</span>
                   </div>
@@ -94,7 +124,7 @@ export default function Pedigree() {
             {/* Footer with seal */}
             <div className="bg-navy px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <img src={img('images/logo-alianz.png')} alt="Alianz" className="h-8 w-8 object-contain" />
+                <img src={img('images/logo-alianz.png')} alt="Alianz" className="h-8 w-8 object-contain" crossOrigin="anonymous" />
                 <div>
                   <p className="text-gold font-serif text-sm italic">Alianz</p>
                   <p className="text-gray-400 text-[9px]">Sello Oficial</p>
@@ -108,11 +138,21 @@ export default function Pedigree() {
 
           {/* Actions */}
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <button className="bg-gold-gradient text-white font-semibold text-sm py-3 rounded-xl active:scale-95 transition-transform">
+            <button className="bg-gold-gradient text-white font-semibold text-sm py-3 rounded-xl active:scale-95 transition-transform flex items-center justify-center gap-2">
+              <Share2 size={16} />
               Compartir
             </button>
-            <button className="bg-white text-navy font-semibold text-sm py-3 rounded-xl border border-navy/10 card-shadow active:scale-95 transition-transform">
-              Descargar PDF
+            <button
+              onClick={downloadPdf}
+              disabled={generating}
+              className="bg-white text-navy font-semibold text-sm py-3 rounded-xl border border-navy/10 card-shadow active:scale-95 transition-transform flex items-center justify-center gap-2"
+            >
+              {generating ? (
+                <Loader2 size={16} className="animate-spin" />
+              ) : (
+                <Download size={16} />
+              )}
+              {generating ? 'Generando...' : 'Descargar PDF'}
             </button>
           </div>
         </div>
