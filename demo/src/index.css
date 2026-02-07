@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1B2838;
+  --color-navy-light: #253649;
+  --color-navy-dark: #0F1923;
+  --color-gold: #C6A962;
+  --color-gold-light: #D4B96A;
+  --color-gold-dark: #B8963E;
+  --color-cream: #F8F5F0;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #B8963E 0%, #D4B96A 50%, #C6A962 100%);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(180deg, #0F1923 0%, #1B2838 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.scroll-area {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-transition {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
