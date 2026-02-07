@@ -1,1 +1,4 @@
-{ "enabled": false }
+{
+  "ricardo": { "enabled": false },
+  "carlos": { "enabled": true }
+}

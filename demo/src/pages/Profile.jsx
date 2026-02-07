@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 import {
   Award, PawPrint, Calendar, Star, Settings, LogOut,
   ChevronRight, Shield, Globe
@@ -29,6 +30,7 @@ const menuItems = [
 
 export default function Profile() {
   const navigate = useNavigate()
+  const user = useUser()
 
   return (
     <div className="h-full flex flex-col">
@@ -36,11 +38,11 @@ export default function Profile() {
         {/* Profile header */}
         <div className="bg-navy-gradient safe-top px-4 pt-8 pb-8 text-center">
           <img
-            src={img('images/avatar-ricardo.jpg')}
-            alt="Ricardo"
+            src={img(user.avatar)}
+            alt={user.name}
             className="w-20 h-20 rounded-full border-3 border-gold mx-auto object-cover"
           />
-          <h2 className="text-white font-bold text-xl mt-3">Ricardo Martínez</h2>
+          <h2 className="text-white font-bold text-xl mt-3">{user.fullName}</h2>
           <p className="text-gold/70 text-sm mt-0.5">Handler & Criador Profesional</p>
           <div className="flex items-center justify-center gap-1.5 mt-1">
             <Globe size={12} className="text-gray-400" />

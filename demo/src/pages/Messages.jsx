@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from '../components/Header'
 import { Send, Image, Paperclip } from 'lucide-react'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 
 const conversations = [
   {
@@ -41,7 +42,7 @@ const conversations = [
 ]
 
 const chatMessages = [
-  { id: 1, from: 'them', text: 'Hola Ricardo, te informamos que tu solicitud de certificación como Handler Profesional ha sido revisada.', time: '10:28' },
+  { id: 1, from: 'them', text: 'Hola, te informamos que tu solicitud de certificación como Handler Profesional ha sido revisada.', time: '10:28' },
   { id: 2, from: 'them', text: 'Tu certificación de Handler ha sido aprobada. ¡Felicidades! Ya puedes ver tu certificado en la sección de Universidad.', time: '10:30' },
   { id: 3, from: 'me', text: '¡Excelente noticia! Muchas gracias. ¿Ya está disponible para descargar?', time: '10:32' },
   { id: 4, from: 'them', text: 'Sí, puedes descargarlo directamente desde Alianz Universidad > Mis Certificaciones. También lo puedes compartir desde tu perfil.', time: '10:33' },

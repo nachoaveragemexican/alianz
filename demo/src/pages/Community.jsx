@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import Header from '../components/Header'
 import { Heart, MessageCircle, Share2, BadgeCheck, MoreHorizontal, ChevronLeft, Send } from 'lucide-react'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 
 const initialComments = {
   1: [
@@ -60,6 +61,7 @@ const posts = [
 ]
 
 export default function Community() {
+  const user = useUser()
   const [feed, setFeed] = useState(posts)
   const [allComments, setAllComments] = useState(initialComments)
   const [openPostId, setOpenPostId] = useState(null)
@@ -87,8 +89,8 @@ export default function Community() {
     if (!newComment.trim() || !openPostId) return
     const comment = {
       id: Date.now(),
-      user: 'Ricardo M.',
-      avatar: img('images/avatar-ricardo.jpg'),
+      user: `${user.name} M.`,
+      avatar: img(user.avatar),
       text: newComment.trim(),
       time: 'ahora',
     }
@@ -188,7 +190,7 @@ export default function Community() {
 
         {/* Comment input */}
         <div className="safe-bottom bg-white border-t border-gray-100 px-3 py-2 flex items-center gap-2 shrink-0">
-          <img src={img('images/avatar-ricardo.jpg')} alt="Tú" className="w-8 h-8 rounded-full object-cover shrink-0" />
+          <img src={img(user.avatar)} alt="Tú" className="w-8 h-8 rounded-full object-cover shrink-0" />
           <input
             ref={inputRef}
             type="text"

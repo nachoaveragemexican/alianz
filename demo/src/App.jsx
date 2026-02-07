@@ -13,14 +13,19 @@ import Messages from './pages/Messages'
 import Settings from './pages/Settings'
 import Verification from './pages/Verification'
 import { img } from './utils'
+import { UserProvider, getUserFromURL } from './UserContext'
 
 function DemoGate({ children }) {
   const [status, setStatus] = useState('loading')
 
   useEffect(() => {
+    const user = getUserFromURL()
     fetch(`${import.meta.env.BASE_URL}demo-access.json?t=${Date.now()}`)
       .then(r => r.json())
-      .then(data => setStatus(data.enabled ? 'active' : 'expired'))
+      .then(data => {
+        const entry = data[user.id]
+        setStatus(entry && entry.enabled ? 'active' : 'expired')
+      })
       .catch(() => setStatus('active'))
   }, [])
 
@@ -55,28 +60,30 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <DemoGate>
-      <div className="h-full flex flex-col bg-cream max-w-[430px] mx-auto relative overflow-hidden"
-           style={{ height: '100dvh' }}>
-        <div className="flex-1 overflow-hidden">
-          <div className="h-full page-transition" key={location.pathname}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/kennel" element={<Kennel />} />
-              <Route path="/pedigree" element={<Pedigree />} />
-              <Route path="/registro" element={<Register />} />
-              <Route path="/universidad" element={<University />} />
-              <Route path="/comunidad" element={<Community />} />
-              <Route path="/eventos" element={<Events />} />
-              <Route path="/perfil" element={<Profile />} />
-              <Route path="/mensajes" element={<Messages />} />
-              <Route path="/configuracion" element={<Settings />} />
-              <Route path="/verificacion" element={<Verification />} />
-            </Routes>
+    <UserProvider>
+      <DemoGate>
+        <div className="h-full flex flex-col bg-cream max-w-[430px] mx-auto relative overflow-hidden"
+             style={{ height: '100dvh' }}>
+          <div className="flex-1 overflow-hidden">
+            <div className="h-full page-transition" key={location.pathname}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/kennel" element={<Kennel />} />
+                <Route path="/pedigree" element={<Pedigree />} />
+                <Route path="/registro" element={<Register />} />
+                <Route path="/universidad" element={<University />} />
+                <Route path="/comunidad" element={<Community />} />
+                <Route path="/eventos" element={<Events />} />
+                <Route path="/perfil" element={<Profile />} />
+                <Route path="/mensajes" element={<Messages />} />
+                <Route path="/configuracion" element={<Settings />} />
+                <Route path="/verificacion" element={<Verification />} />
+              </Routes>
+            </div>
           </div>
+          <BottomNav />
         </div>
-        <BottomNav />
-      </div>
-    </DemoGate>
+      </DemoGate>
+    </UserProvider>
   )
 }

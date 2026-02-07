@@ -5,6 +5,7 @@ import {
   Upload, Award, Stethoscope, Scissors, Gavel, PawPrint, X
 } from 'lucide-react'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 
 const professions = [
   { id: 'handler', label: 'Handler Profesional', desc: 'Presentador de perros en competencias oficiales', icon: PawPrint, color: 'text-gold-dark', bg: 'bg-gold/10' },
@@ -57,6 +58,7 @@ const detailFields = {
 
 export default function Verification() {
   const navigate = useNavigate()
+  const user = useUser()
   const [step, setStep] = useState(0)
   const [selectedProfession, setSelectedProfession] = useState(null)
   const [formData, setFormData] = useState({})
@@ -350,13 +352,13 @@ export default function Verification() {
                 <div className="p-4 space-y-2.5">
                   <div className="flex items-center gap-3 pb-2.5 border-b border-gray-50">
                     <img
-                      src={img('images/avatar-ricardo.jpg')}
-                      alt="Ricardo"
+                      src={img(user.avatar)}
+                      alt={user.name}
                       className="w-10 h-10 rounded-full object-cover"
                     />
                     <div>
-                      <p className="text-navy font-semibold text-sm">Ricardo Martínez</p>
-                      <p className="text-gray-400 text-xs">ricardo.martinez@email.com</p>
+                      <p className="text-navy font-semibold text-sm">{user.fullName}</p>
+                      <p className="text-gray-400 text-xs">{user.email}</p>
                     </div>
                   </div>
 

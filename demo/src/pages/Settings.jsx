@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 import {
   Bell, Mail, Smartphone, Globe, Lock, CreditCard,
   ChevronRight, Moon, Eye, Trash2, HelpCircle, FileText, Check
@@ -18,6 +19,7 @@ function Toggle({ on, onToggle }) {
 }
 
 export default function Settings() {
+  const user = useUser()
   const [notifPush, setNotifPush] = useState(true)
   const [notifEmail, setNotifEmail] = useState(true)
   const [notifSMS, setNotifSMS] = useState(false)
@@ -49,13 +51,13 @@ export default function Settings() {
             </div>
             <div className="p-4 flex items-center gap-3">
               <img
-                src={img('images/avatar-ricardo.jpg')}
-                alt="Ricardo"
+                src={img(user.avatar)}
+                alt={user.name}
                 className="w-12 h-12 rounded-full object-cover"
               />
               <div className="flex-1">
-                <p className="text-navy font-semibold text-sm">Ricardo Martínez</p>
-                <p className="text-gray-400 text-xs">ricardo.martinez@email.com</p>
+                <p className="text-navy font-semibold text-sm">{user.fullName}</p>
+                <p className="text-gray-400 text-xs">{user.email}</p>
               </div>
               <ChevronRight size={16} className="text-gray-300" />
             </div>

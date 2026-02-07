@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle, Crown, Download, X } from 'lucide-react'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 
 const tiles = [
   { label: 'Kennel Virtual', icon: PawPrint, path: '/kennel' },
@@ -12,6 +13,7 @@ const tiles = [
 
 export default function Home() {
   const navigate = useNavigate()
+  const user = useUser()
   const [installPrompt, setInstallPrompt] = useState(null)
   const [showBanner, setShowBanner] = useState(false)
 
@@ -73,14 +75,14 @@ export default function Home() {
           <div className="flex items-center gap-3 mb-3">
             <button onClick={() => navigate('/perfil')} className="shrink-0">
               <img
-                src={img('images/avatar-ricardo.jpg')}
-                alt="Ricardo"
+                src={img(user.avatar)}
+                alt={user.name}
                 className="w-14 h-14 rounded-full border-2 border-gold object-cover"
               />
             </button>
             <div>
               <p className="text-gray-400 text-sm">Bienvenido de nuevo,</p>
-              <p className="text-navy text-xl font-bold">Ricardo!</p>
+              <p className="text-navy text-xl font-bold">{user.name}!</p>
             </div>
             <button
               onClick={() => navigate('/mensajes')}

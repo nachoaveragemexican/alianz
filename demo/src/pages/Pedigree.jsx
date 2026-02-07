@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import Header from '../components/Header'
 import { img } from '../utils'
+import { useUser } from '../UserContext'
 import { Download, Share2, Loader2, Award, Star, Trophy, Medal } from 'lucide-react'
 
 const dogImg = 'images/dog-doberman.jpg'
@@ -32,7 +33,7 @@ const titles = [
 
 const infoRows = [
   { label: 'Registro', value: 'MX-2025-00847' },
-  { label: 'Propietario', value: 'Ricardo F.' },
+  { label: 'Propietario', value: '__USER__' },
   { label: 'Nacimiento', value: '12 / Mar / 2021' },
   { label: 'Microchip', value: '985 120 032 847 291' },
   { label: 'Raza', value: 'Doberman Pinscher' },
@@ -42,6 +43,10 @@ const infoRows = [
 export default function Pedigree() {
   const cardRef = useRef(null)
   const [generating, setGenerating] = useState(false)
+  const user = useUser()
+  const displayInfoRows = infoRows.map(r =>
+    r.value === '__USER__' ? { ...r, value: `${user.name} ${user.fullName.split(' ').pop()?.charAt(0) || ''}.` } : r
+  )
 
   const downloadPdf = async () => {
     if (!cardRef.current || generating) return
@@ -142,7 +147,7 @@ export default function Pedigree() {
             {/* Dog info grid */}
             <div className="mx-3 border-t border-gray-100 py-2">
               <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                {infoRows.map(r => (
+                {displayInfoRows.map(r => (
                   <div key={r.label} className="flex items-baseline gap-1">
                     <span className="text-[8px] text-gray-400 uppercase tracking-wider shrink-0">{r.label}:</span>
                     <span className="text-[9px] text-navy font-semibold truncate">{r.value}</span>
