@@ -35,7 +35,7 @@ export default function Profile() {
     <div className="h-full flex flex-col">
       <Header title="Perfil" rightIcon="globe" />
 
-      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
+      <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
         {/* Profile header */}
         <div className="bg-navy-gradient px-4 pt-4 pb-8 text-center">
           <img

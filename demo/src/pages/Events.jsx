@@ -348,8 +348,8 @@ export default function Events() {
     <div className="h-full flex flex-col">
       <Header title="Calendario de Eventos" showBack />
 
-      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
-        <div className="px-4 pt-4 pb-6">
+      <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
+        <div className="px-4 pt-5 pb-6">
 
           {/* Filters */}
           <div className="flex gap-2 mb-4">

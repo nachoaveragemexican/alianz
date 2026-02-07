@@ -97,8 +97,8 @@ export default function Pedigree() {
     <div className="h-full flex flex-col">
       <Header title="Pedigree Digital" showBack />
 
-      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
-        <div className="px-4 pt-3 pb-6">
+      <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
+        <div className="px-4 pt-5 pb-6">
           {/* Certificate card */}
           <div ref={cardRef} className="bg-white rounded-2xl card-shadow border border-gray-100 relative overflow-visible">
 

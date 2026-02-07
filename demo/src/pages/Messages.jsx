@@ -58,7 +58,7 @@ export default function Messages() {
         <Header title={conv.name} showBack />
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto scroll-area bg-cream px-4 pt-4 pb-2">
+        <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream px-4 pt-5 pb-2">
           <div className="space-y-3">
             {chatMessages.map(msg => (
               <div key={msg.id} className={`flex ${msg.from === 'me' ? 'justify-end' : 'justify-start'}`}>
@@ -104,8 +104,8 @@ export default function Messages() {
     <div className="h-full flex flex-col">
       <Header title="Mensajes" showBack />
 
-      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
-        <div className="px-4 pt-4 pb-6">
+      <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
+        <div className="px-4 pt-5 pb-6">
           {conversations.map(conv => (
             <button
               key={conv.id}
