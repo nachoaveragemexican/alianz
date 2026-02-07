@@ -4,14 +4,24 @@ import Header from '../components/Header'
 import { img } from '../utils'
 import { Download, Share2, Loader2 } from 'lucide-react'
 
-const sire = { name: 'Apollo', img: img('images/ancestor-1.jpg') }
-const dam = { name: 'Diana', img: img('images/ancestor-2.jpg') }
-const grandparents = [
-  { name: 'Rex', img: img('images/ancestor-3.jpg') },
-  { name: 'Luna', img: img('images/ancestor-4.jpg') },
-  { name: 'Thor', img: img('images/ancestor-1.jpg') },
-  { name: 'Bella', img: img('images/ancestor-2.jpg') },
-]
+const dogImg = 'images/dog-doberman.jpg'
+
+const tree = {
+  name: 'Maximus',
+  img: 'images/dog-doberman.jpg',
+  sire: {
+    name: 'Apollo',
+    img: 'images/ancestor-1.jpg',
+    sire: { name: 'Rex', img: 'images/ancestor-3.jpg' },
+    dam: { name: 'Luna', img: 'images/ancestor-4.jpg' },
+  },
+  dam: {
+    name: 'Diana',
+    img: 'images/ancestor-2.jpg',
+    sire: { name: 'Thor', img: 'images/ancestor-1.jpg' },
+    dam: { name: 'Bella', img: 'images/ancestor-2.jpg' },
+  },
+}
 
 export default function Pedigree() {
   const cardRef = useRef(null)
@@ -40,15 +50,16 @@ export default function Pedigree() {
     setGenerating(false)
   }
 
-  const Ancestor = ({ data, size = 'w-10 h-10' }) => (
-    <div className="flex flex-col items-center">
+  const Circle = ({ src, name, size = 40 }) => (
+    <div className="flex flex-col items-center shrink-0">
       <img
-        src={data.img}
-        alt={data.name}
-        className={`${size} rounded-full object-cover border-2 border-gold/40`}
+        src={img(src)}
+        alt={name}
+        style={{ width: size, height: size }}
+        className="rounded-full object-cover border-2 border-gold/40"
         crossOrigin="anonymous"
       />
-      <span className="text-[8px] text-gray-500 mt-0.5 font-medium">{data.name}</span>
+      <span className="text-[7px] text-gray-500 mt-0.5 font-medium leading-tight text-center">{name}</span>
     </div>
   )
 
@@ -60,59 +71,72 @@ export default function Pedigree() {
         <div className="px-4 pt-3 pb-6">
           {/* Certificate card */}
           <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden border border-gray-100">
-            {/* QR codes row */}
-            <div className="flex justify-between items-start px-3 pt-3">
-              <div className="p-1 border-2 border-green-700 rounded-md">
-                <QRCodeSVG value="https://alianz.org/verify/MX-2025-00847" size={48} />
-              </div>
-              <div className="p-1 border-2 border-green-700 rounded-md">
-                <QRCodeSVG value="https://alianz.org/pedigree/MX-2025-00847" size={48} />
+
+            {/* Top section: small QR top-left */}
+            <div className="px-3 pt-3 pb-0">
+              <div className="p-1 border-2 border-green-700 rounded-md inline-block">
+                <QRCodeSVG value="https://alianz.org/verify/MX-2025-00847" size={36} />
               </div>
             </div>
 
-            {/* Dog photo — compact */}
-            <div className="px-5 pt-2 pb-2">
-              <div className="border-2 border-navy/15 rounded-lg overflow-hidden">
-                <img
-                  src={img('images/dog-doberman.jpg')}
-                  alt="CH. Maximus Prince of Alianz"
-                  className="w-full h-36 object-cover"
-                  crossOrigin="anonymous"
-                />
+            {/* Two-column: Photo LEFT | QR + title RIGHT */}
+            <div className="flex gap-3 px-3 pt-2 pb-2">
+              {/* Left: Dog photo */}
+              <div className="w-[48%] shrink-0">
+                <div className="border-2 border-navy/15 rounded-lg overflow-hidden">
+                  <img
+                    src={img(dogImg)}
+                    alt="CH. Maximus Prince of Alianz"
+                    className="w-full h-40 object-cover"
+                    crossOrigin="anonymous"
+                  />
+                </div>
+              </div>
+
+              {/* Right: QR code + Professional + Name */}
+              <div className="flex-1 flex flex-col items-center justify-start pt-1">
+                <div className="p-1 border-2 border-green-700 rounded-md">
+                  <QRCodeSVG value="https://alianz.org/pedigree/MX-2025-00847" size={64} />
+                </div>
+                <p className="text-gray-400 text-[9px] uppercase tracking-widest italic mt-3">Professional</p>
+                <h2 className="text-navy font-serif font-bold text-sm leading-tight mt-1 text-center italic">
+                  CH. Maximus<br />Prince of<br />Alianz
+                </h2>
               </div>
             </div>
 
-            {/* Title */}
-            <div className="text-center px-6 pb-2">
-              <p className="text-gray-400 text-[10px] uppercase tracking-widest italic">Professional</p>
-              <h2 className="text-navy font-bold text-base leading-tight mt-0.5">
-                CH. Maximus<br />Prince of Alianz
-              </h2>
-            </div>
-
-            {/* Genealogical Tree */}
+            {/* Official Family Tree — 3 generations left to right */}
             <div className="mx-3 border-t border-gray-100 pt-2 pb-3">
-              <h3 className="text-navy font-bold text-[10px] uppercase tracking-wider mb-2">Official Family Tree</h3>
+              <h3 className="text-navy font-bold text-[9px] uppercase tracking-wider mb-2">Official Family Tree</h3>
 
-              <div className="flex items-start gap-3">
-                {/* Parents (Sire & Dam) */}
-                <div className="flex flex-col items-center gap-2">
-                  <Ancestor data={sire} size="w-11 h-11" />
-                  <Ancestor data={dam} size="w-11 h-11" />
+              <div className="flex items-center justify-between">
+                {/* Gen 1: The dog */}
+                <div className="flex flex-col items-center shrink-0">
+                  <Circle src={tree.img} name={tree.name} size={38} />
                 </div>
 
-                {/* Connecting lines */}
-                <div className="flex flex-col items-center justify-center self-center">
-                  <div className="w-4 border-t border-gray-300" />
-                  <div className="h-8 border-l border-gray-300" />
-                  <div className="w-4 border-t border-gray-300" />
+                {/* Connector */}
+                <div className="flex-1 flex items-center justify-center px-1">
+                  <div className="w-full border-t border-dashed border-gray-300" />
                 </div>
 
-                {/* Grandparents */}
-                <div className="grid grid-cols-2 gap-x-3 gap-y-1">
-                  {grandparents.map((gp, i) => (
-                    <Ancestor key={i} data={gp} size="w-9 h-9" />
-                  ))}
+                {/* Gen 2: Parents (Sire & Dam) */}
+                <div className="flex flex-col gap-1.5 shrink-0">
+                  <Circle src={tree.sire.img} name={tree.sire.name} size={34} />
+                  <Circle src={tree.dam.img} name={tree.dam.name} size={34} />
+                </div>
+
+                {/* Connector */}
+                <div className="flex-1 flex items-center justify-center px-1">
+                  <div className="w-full border-t border-dashed border-gray-300" />
+                </div>
+
+                {/* Gen 3: Grandparents */}
+                <div className="flex flex-col gap-1 shrink-0">
+                  <Circle src={tree.sire.sire.img} name={tree.sire.sire.name} size={28} />
+                  <Circle src={tree.sire.dam.img} name={tree.sire.dam.name} size={28} />
+                  <Circle src={tree.dam.sire.img} name={tree.dam.sire.name} size={28} />
+                  <Circle src={tree.dam.dam.img} name={tree.dam.dam.name} size={28} />
                 </div>
               </div>
             </div>
