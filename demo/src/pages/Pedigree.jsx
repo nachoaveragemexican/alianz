@@ -47,91 +47,69 @@ export default function Pedigree() {
       <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         <div className="px-4 pt-4 pb-6">
           {/* Certificate card */}
-          <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden">
-            {/* Top QR */}
+          <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden border border-navy/10">
+            {/* Two QR codes at top */}
             <div className="flex justify-between items-start p-4 pb-0">
-              <div className="p-1 border-2 border-green-700 rounded-lg">
-                <QRCodeSVG value="https://alianz.org/verify/MX-2025-00847" size={56} />
+              <div className="p-1.5 border-2 border-green-700 rounded-lg">
+                <QRCodeSVG value="https://alianz.org/verify/MX-2025-00847" size={52} />
               </div>
-              <div className="text-right">
-                <span className="text-[10px] text-gray-400 block">Registro No.</span>
-                <span className="text-navy text-xs font-bold">MX-2025-00847</span>
+              <div className="p-1.5 border-2 border-green-700 rounded-lg">
+                <QRCodeSVG value="https://alianz.org/pedigree/MX-2025-00847" size={52} />
               </div>
             </div>
 
-            {/* Dog photo */}
-            <div className="px-6 py-4">
-              <div className="border-2 border-navy/10 rounded-xl overflow-hidden">
-                <img
-                  src={img('images/dog-doberman.jpg')}
-                  alt="CH. Maximus"
-                  className="w-full h-48 object-cover"
-                  crossOrigin="anonymous"
-                />
+            {/* Dog photo with ornamental border */}
+            <div className="px-8 pt-4 pb-3">
+              <div className="border-[3px] border-navy/20 rounded-xl p-1">
+                <div className="border border-navy/10 rounded-lg overflow-hidden">
+                  <img
+                    src={img('images/dog-doberman.jpg')}
+                    alt="CH. Maximus Prince of Alianz"
+                    className="w-full h-44 object-cover"
+                    crossOrigin="anonymous"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Title */}
-            <div className="text-center px-4 pb-3">
-              <p className="text-gray-400 text-xs uppercase tracking-wider">Profesional</p>
+            <div className="text-center px-6 pb-4">
+              <p className="text-gray-400 text-[11px] uppercase tracking-widest">Professional</p>
               <h2 className="text-navy font-bold text-lg leading-tight mt-1">
                 CH. Maximus Prince<br />of Alianz
               </h2>
-              <div className="flex items-center justify-center gap-2 mt-2">
-                <span className="text-xs bg-gold/10 text-gold-dark px-2 py-0.5 rounded-full font-medium">Doberman</span>
-                <span className="text-xs bg-navy/5 text-navy px-2 py-0.5 rounded-full font-medium">Macho</span>
-              </div>
             </div>
 
-            {/* Info grid */}
-            <div className="mx-4 border-t border-gray-100 py-3 grid grid-cols-2 gap-y-2 text-sm">
-              <div>
-                <span className="text-gray-400 text-xs">Fecha de Nacimiento</span>
-                <p className="text-navy font-medium">15 Mar 2021</p>
-              </div>
-              <div>
-                <span className="text-gray-400 text-xs">Microchip</span>
-                <p className="text-navy font-medium">941000025678432</p>
-              </div>
-              <div>
-                <span className="text-gray-400 text-xs">Criador</span>
-                <p className="text-navy font-medium">Ricardo F.</p>
-              </div>
-              <div>
-                <span className="text-gray-400 text-xs">País</span>
-                <p className="text-navy font-medium">México</p>
-              </div>
-            </div>
-
-            {/* Family Tree */}
+            {/* Official Family Tree */}
             <div className="mx-4 border-t border-gray-100 pt-3 pb-4">
-              <h3 className="text-navy font-bold text-sm mb-3">Árbol Familiar Oficial</h3>
-              <div className="flex items-center gap-3 overflow-x-auto scroll-area pb-2">
+              <h3 className="text-navy font-bold text-xs uppercase tracking-wider mb-3">Official Family Tree</h3>
+              <div className="flex items-center gap-3 overflow-x-auto scroll-area pb-1">
                 {ancestors.map((a, i) => (
                   <div key={i} className="flex flex-col items-center shrink-0">
                     <img
                       src={a.img}
                       alt={a.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-gold/30"
+                      className="w-11 h-11 rounded-full object-cover border-2 border-gold/40"
                       crossOrigin="anonymous"
                     />
-                    <span className="text-[10px] text-gray-500 mt-1">{a.name}</span>
+                    <span className="text-[9px] text-gray-500 mt-1 font-medium">{a.name}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Footer with seal */}
+            {/* Footer with seal and signature */}
             <div className="bg-navy px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <img src={img('images/logo-alianz.png')} alt="Alianz" className="h-8 w-8 object-contain" crossOrigin="anonymous" />
                 <div>
                   <p className="text-gold font-serif text-sm italic">Alianz</p>
-                  <p className="text-gray-400 text-[9px]">Sello Oficial</p>
+                  <p className="text-gray-400 text-[9px]">Official Stamp</p>
                 </div>
               </div>
-              <div className="p-1 bg-white/10 rounded">
-                <QRCodeSVG value="https://alianz.org/verify/MX-2025-00847" size={36} fgColor="#C6A962" bgColor="transparent" />
+              <div className="text-right">
+                <p className="font-serif text-gold italic text-xl tracking-wide opacity-80">Alianz</p>
+                <p className="text-gray-500 text-[8px] -mt-0.5">Certified</p>
               </div>
             </div>
           </div>
