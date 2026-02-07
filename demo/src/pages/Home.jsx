@@ -24,11 +24,13 @@ export default function Home() {
 
         {/* Welcome + avatar */}
         <div className="flex items-center gap-3">
-          <img
-            src={img('images/avatar-ricardo.jpg')}
-            alt="Ricardo"
-            className="w-14 h-14 rounded-full border-2 border-gold object-cover"
-          />
+          <button onClick={() => navigate('/perfil')} className="shrink-0">
+            <img
+              src={img('images/avatar-ricardo.jpg')}
+              alt="Ricardo"
+              className="w-14 h-14 rounded-full border-2 border-gold object-cover"
+            />
+          </button>
           <div>
             <p className="text-gold/70 text-sm">Bienvenido de nuevo,</p>
             <p className="text-white text-xl font-bold">Ricardo!</p>
