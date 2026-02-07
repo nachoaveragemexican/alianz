@@ -58,17 +58,15 @@ export default function Pedigree() {
               </div>
             </div>
 
-            {/* Dog photo with ornamental border */}
-            <div className="px-8 pt-4 pb-3">
-              <div className="border-[3px] border-navy/20 rounded-xl p-1">
-                <div className="border border-navy/10 rounded-lg overflow-hidden">
-                  <img
-                    src={img('images/dog-doberman.jpg')}
-                    alt="CH. Maximus Prince of Alianz"
-                    className="w-full h-44 object-cover"
-                    crossOrigin="anonymous"
-                  />
-                </div>
+            {/* Dog photo with single thick border */}
+            <div className="px-6 pt-4 pb-3">
+              <div className="border-[3px] border-navy/25 rounded-xl overflow-hidden">
+                <img
+                  src={img('images/dog-doberman.jpg')}
+                  alt="CH. Maximus Prince of Alianz"
+                  className="w-full h-44 object-cover"
+                  crossOrigin="anonymous"
+                />
               </div>
             </div>
 
