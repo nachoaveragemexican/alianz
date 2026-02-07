@@ -25,6 +25,7 @@ export default function Register() {
   const [step, setStep] = useState(0)
   const [data, setData] = useState({})
   const [breedSearch, setBreedSearch] = useState('')
+  const [photoPreview, setPhotoPreview] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
   const current = steps[step]
@@ -160,31 +161,64 @@ export default function Register() {
 
           {/* Photo upload */}
           {current.type === 'photo' && (
-            <button className="w-full bg-white border-2 border-dashed border-gray-200 rounded-2xl py-12 flex flex-col items-center gap-3">
-              <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center">
-                <Camera size={28} className="text-gold" />
-              </div>
-              <span className="text-navy font-medium text-sm">Toca para tomar o seleccionar foto</span>
-              <span className="text-gray-400 text-xs">JPG o PNG, máximo 10MB</span>
-            </button>
+            <label className="block cursor-pointer">
+              <input
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className="hidden"
+                onChange={e => {
+                  const file = e.target.files?.[0]
+                  if (file) {
+                    const url = URL.createObjectURL(file)
+                    setPhotoPreview(url)
+                    setData({ ...data, photo: file.name })
+                  }
+                }}
+              />
+              {photoPreview ? (
+                <div className="relative rounded-2xl overflow-hidden card-shadow">
+                  <img src={photoPreview} alt="Preview" className="w-full h-64 object-cover" />
+                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <p className="text-white font-medium text-sm flex items-center gap-2">
+                      <Camera size={16} />
+                      Toca para cambiar foto
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="w-full bg-white border-2 border-dashed border-gray-200 rounded-2xl py-12 flex flex-col items-center gap-3">
+                  <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center">
+                    <Camera size={28} className="text-gold" />
+                  </div>
+                  <span className="text-navy font-medium text-sm">Toca para tomar o seleccionar foto</span>
+                  <span className="text-gray-400 text-xs">JPG o PNG, máximo 10MB</span>
+                </div>
+              )}
+            </label>
           )}
 
           {/* Confirmation */}
           {current.type === 'confirm' && (
-            <div className="bg-white rounded-2xl card-shadow p-4 space-y-3">
-              {Object.entries(data).map(([key, val]) => {
-                const label = {
-                  name: 'Nombre', breed: 'Raza', sex: 'Sexo',
-                  dob: 'Nacimiento', color: 'Color', microchip: 'Microchip'
-                }[key]
-                if (!label) return null
-                return (
-                  <div key={key} className="flex items-center justify-between py-1 border-b border-gray-50 last:border-0">
-                    <span className="text-gray-400 text-sm">{label}</span>
-                    <span className="text-navy font-medium text-sm">{val}</span>
-                  </div>
-                )
-              })}
+            <div className="bg-white rounded-2xl card-shadow overflow-hidden">
+              {photoPreview && (
+                <img src={photoPreview} alt="Preview" className="w-full h-40 object-cover" />
+              )}
+              <div className="p-4 space-y-3">
+                {Object.entries(data).map(([key, val]) => {
+                  const label = {
+                    name: 'Nombre', breed: 'Raza', sex: 'Sexo',
+                    dob: 'Nacimiento', color: 'Color', microchip: 'Microchip'
+                  }[key]
+                  if (!label) return null
+                  return (
+                    <div key={key} className="flex items-center justify-between py-1 border-b border-gray-50 last:border-0">
+                      <span className="text-gray-400 text-sm">{label}</span>
+                      <span className="text-navy font-medium text-sm">{val}</span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           )}
         </div>
