@@ -5,7 +5,7 @@ import { img } from '../utils'
 const tiles = [
   { label: 'Kennel Virtual', icon: PawPrint, path: '/kennel' },
   { label: 'Eventos', icon: Calendar, path: '/eventos' },
-  { label: 'Cursos', icon: GraduationCap, path: '/universidad' },
+  { label: 'Universidad', icon: GraduationCap, path: '/universidad' },
   { label: 'Comunidad', icon: Users, path: '/comunidad' },
 ]
 

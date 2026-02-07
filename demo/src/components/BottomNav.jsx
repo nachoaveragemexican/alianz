@@ -4,7 +4,7 @@ import { Home, Calendar, GraduationCap, Users, User } from 'lucide-react'
 const tabs = [
   { path: '/', label: 'Inicio', icon: Home },
   { path: '/eventos', label: 'Eventos', icon: Calendar },
-  { path: '/universidad', label: 'Cursos', icon: GraduationCap },
+  { path: '/universidad', label: 'Universidad', icon: GraduationCap },
   { path: '/comunidad', label: 'Comunidad', icon: Users },
   { path: '/perfil', label: 'Perfil', icon: User },
 ]
