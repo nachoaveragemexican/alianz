@@ -24,7 +24,7 @@ const menuItems = [
   { label: 'Mi Kennel', icon: PawPrint, path: '/kennel' },
   { label: 'Mis Certificaciones', icon: Award, path: '/universidad' },
   { label: 'Mis Eventos', icon: Calendar, path: '/eventos' },
-  { label: 'Verificación Profesional', icon: Shield, path: null },
+  { label: 'Verificación Profesional', icon: Shield, path: '/verificacion' },
   { label: 'Configuración', icon: Settings, path: '/configuracion' },
 ]
 

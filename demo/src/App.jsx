@@ -10,6 +10,7 @@ import Events from './pages/Events'
 import Profile from './pages/Profile'
 import Messages from './pages/Messages'
 import Settings from './pages/Settings'
+import Verification from './pages/Verification'
 
 export default function App() {
   const location = useLocation()
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/perfil" element={<Profile />} />
             <Route path="/mensajes" element={<Messages />} />
             <Route path="/configuracion" element={<Settings />} />
+            <Route path="/verificacion" element={<Verification />} />
           </Routes>
         </div>
       </div>
