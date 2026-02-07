@@ -8,12 +8,12 @@ const users = {
     email: 'ricardo.martinez@email.com',
     avatar: 'images/avatar-ricardo.jpg',
   },
-  carlos: {
-    id: 'carlos',
-    name: 'Carlos',
-    fullName: 'Carlos García',
-    email: 'carlos.garcia@email.com',
-    avatar: 'images/avatar-juan.jpg',
+  claudia: {
+    id: 'claudia',
+    name: 'Claudia',
+    fullName: 'Claudia Pierce',
+    email: 'claudia.pierce@email.com',
+    avatar: 'images/avatar-claudia.jpg',
   },
 }
 
