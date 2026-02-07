@@ -100,7 +100,7 @@ export default function Pedigree() {
       <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         <div className="px-4 pt-3 pb-6">
           {/* Certificate card */}
-          <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden border border-gray-100 relative">
+          <div ref={cardRef} className="bg-white rounded-2xl card-shadow border border-gray-100 relative overflow-visible">
 
             {/* Two-column: Photo LEFT | QR + title RIGHT */}
             <div className="flex gap-3 px-3 pt-3 pb-2">
@@ -200,7 +200,7 @@ export default function Pedigree() {
             </div>
 
             {/* Footer with single large stamp bleeding up */}
-            <div className="bg-navy px-4 py-3 flex items-center justify-between relative overflow-visible">
+            <div className="bg-navy px-4 py-3 flex items-center justify-between relative overflow-visible rounded-b-2xl">
               <div>
                 <p className="text-gold font-serif text-sm italic">Alianz</p>
                 <p className="text-gray-400 text-[9px]">Official Stamp</p>
