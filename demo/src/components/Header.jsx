@@ -5,8 +5,8 @@ export default function Header({ title, showBack = false, rightIcon = null, onRi
   const navigate = useNavigate()
 
   return (
-    <header className="bg-navy-gradient safe-top px-5 pb-12 shrink-0 flex items-center justify-center" style={{ minHeight: '120px' }}>
-      <div className="flex items-center justify-between w-full">
+    <header className="bg-navy-gradient safe-top px-5 pb-12 shrink-0 flex items-end justify-center" style={{ minHeight: '120px' }}>
+      <div className="flex items-center justify-between w-full mb-1">
         <div className="w-10">
           {showBack && (
             <button onClick={() => navigate(-1)} className="text-gold">
@@ -14,7 +14,7 @@ export default function Header({ title, showBack = false, rightIcon = null, onRi
             </button>
           )}
         </div>
-        <h1 className="text-white text-xl font-bold tracking-wide">
+        <h1 className="text-white text-2xl font-bold tracking-wide">
           {title}
         </h1>
         <div className="w-10 flex justify-end">

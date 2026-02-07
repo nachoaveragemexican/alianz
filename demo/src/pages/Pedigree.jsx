@@ -209,9 +209,9 @@ export default function Pedigree() {
                 <img
                   src={img('images/seal-alianz.png')}
                   alt="Official Stamp"
-                  className="absolute object-contain opacity-35"
+                  className="absolute object-contain opacity-30"
                   crossOrigin="anonymous"
-                  style={{ width: 160, height: 160, bottom: -30, right: -25, transform: 'rotate(-8deg)' }}
+                  style={{ width: 480, height: 480, bottom: -180, right: -150, transform: 'rotate(-8deg)' }}
                 />
               </div>
             </div>
