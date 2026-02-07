@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle } from 'lucide-react'
+import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle, Trophy } from 'lucide-react'
 import { img } from '../utils'
 
 const tiles = [
@@ -37,9 +37,12 @@ export default function Home() {
           </div>
           <button
             onClick={() => navigate('/mensajes')}
-            className="ml-auto bg-navy-light/50 p-2 rounded-full"
+            className="ml-auto bg-navy-light/50 p-2 rounded-full relative"
           >
             <MessageCircle size={20} className="text-gold" />
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-[10px] font-bold">3</span>
+            </span>
           </button>
         </div>
       </header>
@@ -72,7 +75,9 @@ export default function Home() {
                 <h3 className="text-white font-bold text-base mt-1">World Dog Show 2025</h3>
                 <p className="text-gray-400 text-sm mt-0.5">Madrid, España - Oct 15-18</p>
               </div>
-              <img src={img('images/seal-alianz.png')} alt="Seal" className="w-12 h-12 object-contain" />
+              <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center shrink-0">
+                <Trophy size={36} className="text-gold" />
+              </div>
             </div>
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-1">
