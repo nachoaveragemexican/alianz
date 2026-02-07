@@ -1,13 +1,14 @@
 import { QRCodeSVG } from 'qrcode.react'
 import Header from '../components/Header'
+import { img } from '../utils'
 
 const ancestors = [
-  { name: 'Apollo', img: '/images/ancestor-1.jpg' },
-  { name: 'Diana', img: '/images/ancestor-2.jpg' },
-  { name: 'Rex', img: '/images/ancestor-3.jpg' },
-  { name: 'Luna', img: '/images/ancestor-4.jpg' },
-  { name: 'Thor', img: '/images/ancestor-1.jpg' },
-  { name: 'Bella', img: '/images/ancestor-2.jpg' },
+  { name: 'Apollo', img: img('images/ancestor-1.jpg') },
+  { name: 'Diana', img: img('images/ancestor-2.jpg') },
+  { name: 'Rex', img: img('images/ancestor-3.jpg') },
+  { name: 'Luna', img: img('images/ancestor-4.jpg') },
+  { name: 'Thor', img: img('images/ancestor-1.jpg') },
+  { name: 'Bella', img: img('images/ancestor-2.jpg') },
 ]
 
 export default function Pedigree() {
@@ -34,7 +35,7 @@ export default function Pedigree() {
             <div className="px-6 py-4">
               <div className="border-2 border-navy/10 rounded-xl overflow-hidden">
                 <img
-                  src="/images/dog-doberman.jpg"
+                  src={img('images/dog-doberman.jpg')}
                   alt="CH. Maximus"
                   className="w-full h-48 object-cover"
                 />
@@ -93,7 +94,7 @@ export default function Pedigree() {
             {/* Footer with seal */}
             <div className="bg-navy px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <img src="/images/logo-alianz.png" alt="Alianz" className="h-8 w-8 object-contain" />
+                <img src={img('images/logo-alianz.png')} alt="Alianz" className="h-8 w-8 object-contain" />
                 <div>
                   <p className="text-gold font-serif text-sm italic">Alianz</p>
                   <p className="text-gray-400 text-[9px]">Sello Oficial</p>

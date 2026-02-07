@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import { Heart, MessageCircle, Share2, BadgeCheck, MoreHorizontal } from 'lucide-react'
+import { img } from '../utils'
 
 const posts = [
   {
     id: 1,
     user: 'María K.',
-    avatar: '/images/avatar-maria.jpg',
+    avatar: img('images/avatar-maria.jpg'),
     verified: true,
     time: 'hace 2 horas',
     text: 'Increíble resultado en el Show Nacional Alianz! Nuestro CH. Rex von Heidelberg obtuvo Best in Show. Muy orgullosa del equipo!',
-    image: '/images/dog-german-shepherd.jpg',
+    image: img('images/dog-german-shepherd.jpg'),
     likes: 47,
     comments: 12,
     liked: false,
@@ -18,11 +19,11 @@ const posts = [
   {
     id: 2,
     user: 'Juan D.',
-    avatar: '/images/avatar-juan.jpg',
+    avatar: img('images/avatar-juan.jpg'),
     verified: true,
     time: 'hace 5 horas',
     text: 'Preparando a nuestro poodle para la competencia de grooming del próximo mes. Alianz University ha sido una gran ayuda con las técnicas.',
-    image: '/images/dog-poodle.jpg',
+    image: img('images/dog-poodle.jpg'),
     likes: 31,
     comments: 8,
     liked: true,
@@ -30,11 +31,11 @@ const posts = [
   {
     id: 3,
     user: 'Ricardo M.',
-    avatar: '/images/avatar-ricardo.jpg',
+    avatar: img('images/avatar-ricardo.jpg'),
     verified: true,
     time: 'hace 1 día',
     text: 'Nuevo pedigree registrado para Maximus Prince. El proceso digital fue rápido y sencillo. Gran trabajo, Alianz!',
-    image: '/images/dog-doberman.jpg',
+    image: img('images/dog-doberman.jpg'),
     likes: 62,
     comments: 15,
     liked: false,

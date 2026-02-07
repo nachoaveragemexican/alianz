@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import { Play, CheckCircle2, Circle, Award, Lock } from 'lucide-react'
+import { img } from '../utils'
 
 const modules = [
   { id: 1, title: 'Show Stacking', desc: 'Posiciones y técnicas de presentación', status: 'completed' },
@@ -25,7 +26,7 @@ export default function University() {
           {/* Video thumbnail */}
           <div className="relative rounded-2xl overflow-hidden card-shadow">
             <img
-              src="/images/dog-golden.jpg"
+              src={img('images/dog-golden.jpg')}
               alt="Curso"
               className="w-full h-48 object-cover"
             />
@@ -54,7 +55,7 @@ export default function University() {
               </div>
             </div>
             <div className="shrink-0">
-              <img src="/images/seal-alianz.png" alt="Certificado" className="w-12 h-12 object-contain opacity-40" />
+              <img src={img('images/seal-alianz.png')} alt="Certificado" className="w-12 h-12 object-contain opacity-40" />
             </div>
           </div>
 

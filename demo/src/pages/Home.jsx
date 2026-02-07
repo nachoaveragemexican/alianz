@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle } from 'lucide-react'
+import { img } from '../utils'
 
 const tiles = [
   { label: 'Pedigrees', icon: PawPrint, path: '/pedigree' },
@@ -24,7 +25,7 @@ export default function Home() {
         {/* Welcome + avatar */}
         <div className="flex items-center gap-3">
           <img
-            src="/images/avatar-ricardo.jpg"
+            src={img('images/avatar-ricardo.jpg')}
             alt="Ricardo"
             className="w-14 h-14 rounded-full border-2 border-gold object-cover"
           />
@@ -69,7 +70,7 @@ export default function Home() {
                 <h3 className="text-white font-bold text-base mt-1">World Dog Show 2025</h3>
                 <p className="text-gray-400 text-sm mt-0.5">Madrid, España - Oct 15-18</p>
               </div>
-              <img src="/images/seal-alianz.png" alt="Seal" className="w-12 h-12 object-contain" />
+              <img src={img('images/seal-alianz.png')} alt="Seal" className="w-12 h-12 object-contain" />
             </div>
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-1">

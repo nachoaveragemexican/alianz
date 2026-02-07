@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import { Send, Image, Paperclip } from 'lucide-react'
+import { img } from '../utils'
 
 const conversations = [
   {
     id: 1,
     name: 'Alianz HQ',
-    avatar: '/images/logo-alianz.png',
+    avatar: img('images/logo-alianz.png'),
     lastMsg: 'Tu certificación de Handler ha sido aprobada. ¡Felicidades!',
     time: '10:30',
     unread: 1,
@@ -15,7 +16,7 @@ const conversations = [
   {
     id: 2,
     name: 'María K.',
-    avatar: '/images/avatar-maria.jpg',
+    avatar: img('images/avatar-maria.jpg'),
     lastMsg: '¡Felicidades por el resultado en el show! Tu doberman estuvo increíble.',
     time: 'Ayer',
     unread: 0,
@@ -23,7 +24,7 @@ const conversations = [
   {
     id: 3,
     name: 'Juan D.',
-    avatar: '/images/avatar-juan.jpg',
+    avatar: img('images/avatar-juan.jpg'),
     lastMsg: '¿Vas a asistir al seminario de grooming en Guadalajara?',
     time: 'Ayer',
     unread: 2,
@@ -31,7 +32,7 @@ const conversations = [
   {
     id: 4,
     name: 'Alianz México',
-    avatar: '/images/seal-alianz.png',
+    avatar: img('images/seal-alianz.png'),
     lastMsg: 'Recordatorio: Inscripciones abiertas para el Show Nacional de Marzo.',
     time: 'Lun',
     unread: 0,

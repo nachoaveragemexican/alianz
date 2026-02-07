@@ -1,5 +1,6 @@
 import Header from '../components/Header'
 import { useNavigate } from 'react-router-dom'
+import { img } from '../utils'
 import {
   Award, PawPrint, Calendar, Star, Settings, LogOut,
   ChevronRight, Shield, Globe
@@ -38,7 +39,7 @@ export default function Profile() {
         {/* Profile header */}
         <div className="bg-navy-gradient px-4 pt-4 pb-8 text-center">
           <img
-            src="/images/avatar-ricardo.jpg"
+            src={img('images/avatar-ricardo.jpg')}
             alt="Ricardo"
             className="w-20 h-20 rounded-full border-3 border-gold mx-auto object-cover"
           />
