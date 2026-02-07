@@ -199,29 +199,17 @@ export default function Pedigree() {
               </div>
             </div>
 
-            {/* Big seal stamp — bleeds across footer boundary */}
-            <div className="relative" style={{ zIndex: 3, pointerEvents: 'none' }}>
-              <img
-                src={img('images/seal-alianz.png')}
-                alt="Official Stamp"
-                className="absolute right-3 -bottom-8 w-28 h-28 object-contain opacity-25"
-                crossOrigin="anonymous"
-                style={{ transform: 'rotate(-12deg)' }}
-              />
-            </div>
-
-            {/* Footer */}
+            {/* Footer with single large stamp bleeding up */}
             <div className="bg-navy px-4 py-3 flex items-center justify-between relative overflow-visible">
               <div>
                 <p className="text-gold font-serif text-sm italic">Alianz</p>
                 <p className="text-gray-400 text-[9px]">Official Stamp</p>
               </div>
-              {/* Large stamp in footer that bleeds up */}
               <div className="relative" style={{ width: 80, height: 48 }}>
                 <img
                   src={img('images/seal-alianz.png')}
                   alt="Official Stamp"
-                  className="absolute -top-10 -right-1 w-24 h-24 object-contain opacity-60"
+                  className="absolute -top-14 -right-2 w-28 h-28 object-contain opacity-50"
                   crossOrigin="anonymous"
                   style={{ transform: 'rotate(-8deg)' }}
                 />
