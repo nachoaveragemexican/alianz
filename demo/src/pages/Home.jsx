@@ -14,17 +14,17 @@ export default function Home() {
 
   return (
     <div className="h-full flex flex-col">
-      {/* Slim navy header — just branding */}
-      <header className="bg-navy-gradient safe-top px-5 pt-3 pb-4 shrink-0">
-        <div className="flex items-center justify-between">
-          <div className="w-8" />
-          <h1 className="font-serif text-gold text-3xl italic tracking-wide">Alianz</h1>
-          <Globe size={22} className="text-gold/70" />
+      {/* Navy header — branding only */}
+      <header className="bg-navy-gradient safe-top px-5 pt-4 pb-10 shrink-0">
+        <div className="flex items-center justify-center gap-3">
+          <Globe size={28} className="text-gold/70" />
+          <h1 className="font-serif text-gold text-4xl italic tracking-wide">Alianz</h1>
+          <div className="w-7" />
         </div>
       </header>
 
-      {/* Content on cream */}
-      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
+      {/* Content on cream — overlaps navy header */}
+      <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
         <div className="px-4 pt-5 pb-4">
           {/* Welcome + avatar row */}
           <div className="flex items-center gap-3 mb-5">
