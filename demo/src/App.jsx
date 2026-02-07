@@ -9,6 +9,7 @@ import Community from './pages/Community'
 import Events from './pages/Events'
 import Profile from './pages/Profile'
 import Messages from './pages/Messages'
+import Settings from './pages/Settings'
 
 export default function App() {
   const location = useLocation()
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/eventos" element={<Events />} />
             <Route path="/perfil" element={<Profile />} />
             <Route path="/mensajes" element={<Messages />} />
+            <Route path="/configuracion" element={<Settings />} />
           </Routes>
         </div>
       </div>

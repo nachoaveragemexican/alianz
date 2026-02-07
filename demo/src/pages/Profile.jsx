@@ -25,7 +25,7 @@ const menuItems = [
   { label: 'Mis Certificaciones', icon: Award, path: '/universidad' },
   { label: 'Mis Eventos', icon: Calendar, path: '/eventos' },
   { label: 'Verificación Profesional', icon: Shield, path: null },
-  { label: 'Configuración', icon: Settings, path: null },
+  { label: 'Configuración', icon: Settings, path: '/configuracion' },
 ]
 
 export default function Profile() {
