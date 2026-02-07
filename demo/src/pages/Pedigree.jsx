@@ -95,7 +95,7 @@ export default function Pedigree() {
               </div>
               <div>
                 <span className="text-gray-400 text-xs">Criador</span>
-                <p className="text-navy font-medium">Ricardo M.</p>
+                <p className="text-navy font-medium">Ricardo F.</p>
               </div>
               <div>
                 <span className="text-gray-400 text-xs">País</span>
