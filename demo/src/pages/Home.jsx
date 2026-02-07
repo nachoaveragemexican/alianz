@@ -15,11 +15,11 @@ export default function Home() {
   return (
     <div className="h-full flex flex-col">
       {/* Navy header — branding only */}
-      <header className="bg-navy-gradient safe-top px-5 pt-4 pb-10 shrink-0">
-        <div className="flex items-center justify-center gap-3">
-          <Globe size={28} className="text-gold/70" />
-          <h1 className="font-serif text-gold text-4xl italic tracking-wide">Alianz</h1>
+      <header className="bg-navy-gradient safe-top px-5 pt-6 pb-16 shrink-0">
+        <div className="flex items-center justify-between">
           <div className="w-7" />
+          <h1 className="font-serif text-gold text-4xl italic tracking-wide">Alianz</h1>
+          <Globe size={28} className="text-gold/70" />
         </div>
       </header>
 
