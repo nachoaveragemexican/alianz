@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="h-full flex flex-col">
       {/* Navy header — branding only */}
-      <header className="bg-navy-gradient safe-top px-5 pb-12 shrink-0 flex items-center justify-center" style={{ minHeight: '120px' }}>
+      <header className="bg-navy-gradient safe-top px-5 pb-10 shrink-0 flex items-center justify-center" style={{ minHeight: '100px' }}>
         <div className="flex items-center justify-between w-full">
           <div className="w-7" />
           <h1 className="font-serif text-gold text-4xl italic tracking-wide">Alianz</h1>
@@ -70,7 +70,7 @@ export default function Home() {
           )}
 
           {/* Welcome + avatar row */}
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-3">
             <button onClick={() => navigate('/perfil')} className="shrink-0">
               <img
                 src={img('images/avatar-ricardo.jpg')}
@@ -94,16 +94,16 @@ export default function Home() {
           </div>
 
           {/* Quick action tiles */}
-          <div className="grid grid-cols-2 gap-3 mb-5">
+          <div className="grid grid-cols-2 gap-2.5 mb-3">
             {tiles.map((tile) => {
               const Icon = tile.icon
               return (
                 <button
                   key={tile.label}
                   onClick={() => navigate(tile.path)}
-                  className="bg-gold-gradient rounded-2xl p-4 flex flex-col items-center gap-2 active:scale-[0.97] transition-transform"
+                  className="bg-gold-gradient rounded-2xl p-3 flex flex-col items-center gap-1.5 active:scale-[0.97] transition-transform"
                 >
-                  <Icon size={28} className="text-white" />
+                  <Icon size={24} className="text-white" />
                   <span className="text-white font-semibold text-sm">{tile.label}</span>
                 </button>
               )
@@ -111,8 +111,8 @@ export default function Home() {
           </div>
 
           {/* Next event card */}
-          <div className="bg-navy rounded-2xl p-4 card-shadow">
-            <div className="flex items-start justify-between mb-2">
+          <div className="bg-navy rounded-2xl p-3.5 card-shadow">
+            <div className="flex items-start justify-between mb-1.5">
               <div>
                 <p className="text-gold text-xs font-medium uppercase tracking-wider">Próximo Evento:</p>
                 <h3 className="text-white font-bold text-base mt-1">World Dog Show 2025</h3>
@@ -125,7 +125,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center justify-between mt-3">
               <div className="flex items-center gap-1">
                 <div className="bg-navy-light rounded-lg px-3 py-1.5">
                   <span className="text-white font-bold text-lg">15</span>
@@ -146,10 +146,10 @@ export default function Home() {
           </div>
 
           {/* Recent activity */}
-          <div className="mt-5">
-            <h3 className="text-navy font-bold text-base mb-3">Actividad Reciente</h3>
+          <div className="mt-3">
+            <h3 className="text-navy font-bold text-base mb-2">Actividad Reciente</h3>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               <div className="bg-white rounded-xl p-3 card-shadow flex items-center gap-3">
                 <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center shrink-0">
                   <PawPrint size={18} className="text-green-600" />
