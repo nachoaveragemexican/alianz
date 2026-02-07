@@ -138,7 +138,22 @@ export default function Pedigree() {
 
           {/* Actions */}
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <button className="bg-gold-gradient text-white font-semibold text-sm py-3 rounded-xl active:scale-95 transition-transform flex items-center justify-center gap-2">
+            <button
+              onClick={async () => {
+                const shareData = {
+                  title: 'Pedigree Digital - CH. Maximus Prince of Alianz',
+                  text: 'Pedigree Digital verificado por Alianz Canine Worldwide. Registro: MX-2025-00847',
+                  url: window.location.href,
+                }
+                if (navigator.share) {
+                  try { await navigator.share(shareData) } catch {}
+                } else {
+                  await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`)
+                  alert('Enlace copiado al portapapeles')
+                }
+              }}
+              className="bg-gold-gradient text-white font-semibold text-sm py-3 rounded-xl active:scale-95 transition-transform flex items-center justify-center gap-2"
+            >
               <Share2 size={16} />
               Compartir
             </button>
