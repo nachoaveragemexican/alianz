@@ -1,4 +1,3 @@
-import Header from '../components/Header'
 import { useNavigate } from 'react-router-dom'
 import { img } from '../utils'
 import {
@@ -33,11 +32,9 @@ export default function Profile() {
 
   return (
     <div className="h-full flex flex-col">
-      <Header title="Perfil" rightIcon="globe" />
-
-      <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
+      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         {/* Profile header */}
-        <div className="bg-navy-gradient px-4 pt-4 pb-8 text-center">
+        <div className="bg-navy-gradient safe-top px-4 pt-4 pb-8 text-center">
           <img
             src={img('images/avatar-ricardo.jpg')}
             alt="Ricardo"
