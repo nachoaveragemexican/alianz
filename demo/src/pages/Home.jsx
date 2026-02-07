@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle, Trophy } from 'lucide-react'
+import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle, Crown } from 'lucide-react'
 import { img } from '../utils'
 
 const tiles = [
@@ -14,42 +14,42 @@ export default function Home() {
 
   return (
     <div className="h-full flex flex-col">
-      {/* Header */}
-      <header className="bg-navy-gradient safe-top px-4 pt-3 pb-6 shrink-0">
-        <div className="flex items-center justify-between mb-5">
-          <div className="w-10" />
-          <h1 className="font-serif text-gold text-2xl italic tracking-wide">Alianz</h1>
-          <Globe size={20} className="text-gold/70" />
-        </div>
-
-        {/* Welcome + avatar */}
-        <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/perfil')} className="shrink-0">
-            <img
-              src={img('images/avatar-ricardo.jpg')}
-              alt="Ricardo"
-              className="w-14 h-14 rounded-full border-2 border-gold object-cover"
-            />
-          </button>
-          <div>
-            <p className="text-gold/70 text-sm">Bienvenido de nuevo,</p>
-            <p className="text-white text-xl font-bold">Ricardo!</p>
-          </div>
-          <button
-            onClick={() => navigate('/mensajes')}
-            className="ml-auto bg-navy-light/50 p-2 rounded-full relative"
-          >
-            <MessageCircle size={20} className="text-gold" />
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
-              <span className="text-white text-[10px] font-bold">3</span>
-            </span>
-          </button>
+      {/* Slim navy header — just branding */}
+      <header className="bg-navy-gradient safe-top px-5 pt-3 pb-4 shrink-0">
+        <div className="flex items-center justify-between">
+          <div className="w-8" />
+          <h1 className="font-serif text-gold text-3xl italic tracking-wide">Alianz</h1>
+          <Globe size={22} className="text-gold/70" />
         </div>
       </header>
 
-      {/* Content */}
-      <div className="flex-1 overflow-y-auto scroll-area -mt-3 rounded-t-2xl bg-cream">
+      {/* Content on cream */}
+      <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         <div className="px-4 pt-5 pb-4">
+          {/* Welcome + avatar row */}
+          <div className="flex items-center gap-3 mb-5">
+            <button onClick={() => navigate('/perfil')} className="shrink-0">
+              <img
+                src={img('images/avatar-ricardo.jpg')}
+                alt="Ricardo"
+                className="w-14 h-14 rounded-full border-2 border-gold object-cover"
+              />
+            </button>
+            <div>
+              <p className="text-gray-400 text-sm">Bienvenido de nuevo,</p>
+              <p className="text-navy text-xl font-bold">Ricardo!</p>
+            </div>
+            <button
+              onClick={() => navigate('/mensajes')}
+              className="ml-auto bg-navy/10 p-2.5 rounded-full relative"
+            >
+              <MessageCircle size={20} className="text-navy" />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-[10px] font-bold">3</span>
+              </span>
+            </button>
+          </div>
+
           {/* Quick action tiles */}
           <div className="grid grid-cols-2 gap-3 mb-5">
             {tiles.map((tile) => {
@@ -75,8 +75,11 @@ export default function Home() {
                 <h3 className="text-white font-bold text-base mt-1">World Dog Show 2025</h3>
                 <p className="text-gray-400 text-sm mt-0.5">Madrid, España - Oct 15-18</p>
               </div>
-              <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center shrink-0">
-                <Trophy size={36} className="text-gold" />
+              {/* Gold medallion with crown */}
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold via-yellow-500 to-gold-dark flex items-center justify-center shrink-0 shadow-lg">
+                <div className="w-[52px] h-[52px] rounded-full bg-gradient-to-br from-gold-dark to-gold flex items-center justify-center border-2 border-yellow-300/50">
+                  <Crown size={26} className="text-white drop-shadow" />
+                </div>
               </div>
             </div>
             <div className="flex items-center justify-between mt-4">
@@ -86,7 +89,7 @@ export default function Home() {
                 </div>
                 <span className="text-gold font-bold mx-1">:</span>
                 <div className="bg-navy-light rounded-lg px-3 py-1.5">
-                  <span className="text-white font-bold text-lg">22</span>
+                  <span className="text-white font-bold text-lg">18</span>
                 </div>
                 <span className="text-gray-400 text-xs ml-2">días : hrs</span>
               </div>
