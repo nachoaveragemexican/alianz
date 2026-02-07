@@ -2,14 +2,15 @@
   "name": "Alianz Virtual",
   "short_name": "Alianz",
   "description": "Alianz Canine Worldwide - Plataforma Digital",
-  "start_url": "/",
+  "start_url": "/alianz/",
+  "scope": "/alianz/",
   "display": "standalone",
   "background_color": "#1B2838",
   "theme_color": "#1B2838",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/images/logo-alianz.png",
+      "src": "/alianz/images/logo-alianz.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

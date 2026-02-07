@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Alianz" />
     <meta name="theme-color" content="#1B2838" />
     <link rel="apple-touch-icon" href="/alianz/images/logo-alianz.png" />
     <link rel="manifest" href="/alianz/manifest.json" />
@@ -20,10 +21,17 @@
         -moz-osx-font-smoothing: grayscale;
       }
     </style>
-    <script type="module" crossorigin src="/alianz/assets/index-xffAZ_Cj.js"></script>
-    <link rel="stylesheet" crossorigin href="/alianz/assets/index-CkNUekzT.css">
+    <script type="module" crossorigin src="/alianz/assets/index-B-91wmY0.js"></script>
+    <link rel="stylesheet" crossorigin href="/alianz/assets/index-B5d8pty_.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/alianz/sw.js')
+        })
+      }
+    </script>
   </body>
 </html>

@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle, Crown } from 'lucide-react'
+import { PawPrint, Calendar, GraduationCap, Users, Globe, MessageCircle, Crown, Download, X } from 'lucide-react'
 import { img } from '../utils'
 
 const tiles = [
@@ -11,6 +12,29 @@ const tiles = [
 
 export default function Home() {
   const navigate = useNavigate()
+  const [installPrompt, setInstallPrompt] = useState(null)
+  const [showBanner, setShowBanner] = useState(false)
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault()
+      setInstallPrompt(e)
+      // Only show if not already installed
+      if (!window.matchMedia('(display-mode: standalone)').matches) {
+        setShowBanner(true)
+      }
+    }
+    window.addEventListener('beforeinstallprompt', handler)
+    return () => window.removeEventListener('beforeinstallprompt', handler)
+  }, [])
+
+  const handleInstall = async () => {
+    if (!installPrompt) return
+    installPrompt.prompt()
+    await installPrompt.userChoice
+    setShowBanner(false)
+    setInstallPrompt(null)
+  }
 
   return (
     <div className="h-full flex flex-col">
@@ -26,6 +50,25 @@ export default function Home() {
       {/* Content on cream — overlaps navy header */}
       <div className="flex-1 overflow-y-auto scroll-area -mt-5 rounded-t-3xl bg-cream">
         <div className="px-4 pt-5 pb-4">
+          {/* Install banner */}
+          {showBanner && (
+            <div className="bg-navy rounded-xl p-3 mb-4 flex items-center gap-3">
+              <div className="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center shrink-0">
+                <Download size={18} className="text-gold" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-medium">Instalar Alianz</p>
+                <p className="text-gray-400 text-xs">Agregar a pantalla de inicio</p>
+              </div>
+              <button onClick={handleInstall} className="bg-gold-gradient text-white text-xs font-semibold px-3 py-1.5 rounded-full shrink-0">
+                Instalar
+              </button>
+              <button onClick={() => setShowBanner(false)} className="text-gray-500 shrink-0">
+                <X size={16} />
+              </button>
+            </div>
+          )}
+
           {/* Welcome + avatar row */}
           <div className="flex items-center gap-3 mb-5">
             <button onClick={() => navigate('/perfil')} className="shrink-0">
