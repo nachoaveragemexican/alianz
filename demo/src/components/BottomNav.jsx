@@ -21,7 +21,10 @@ export default function BottomNav() {
         return (
           <button
             key={tab.path}
-            onClick={() => navigate(tab.path)}
+            onClick={() => {
+              if (navigator.vibrate) navigator.vibrate(10)
+              navigate(tab.path)
+            }}
             className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-lg transition-colors ${
               isActive
                 ? 'text-navy'
@@ -32,6 +35,9 @@ export default function BottomNav() {
             <span className={`text-[10px] ${isActive ? 'font-semibold' : 'font-normal'}`}>
               {tab.label}
             </span>
+            {isActive && (
+              <span className="w-1 h-1 bg-gold rounded-full -mt-0.5" />
+            )}
           </button>
         )
       })}
