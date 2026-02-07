@@ -70,17 +70,10 @@ export default function Pedigree() {
       <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         <div className="px-4 pt-3 pb-6">
           {/* Certificate card */}
-          <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden border border-gray-100">
-
-            {/* Top section: small QR top-left */}
-            <div className="px-3 pt-3 pb-0">
-              <div className="p-1 border-2 border-green-700 rounded-md inline-block">
-                <QRCodeSVG value="https://alianz.org/verify/MX-2025-00847" size={36} />
-              </div>
-            </div>
+          <div ref={cardRef} className="bg-white rounded-2xl card-shadow overflow-hidden border border-gray-100 relative">
 
             {/* Two-column: Photo LEFT | QR + title RIGHT */}
-            <div className="flex gap-3 px-3 pt-2 pb-2">
+            <div className="flex gap-3 px-3 pt-3 pb-2">
               {/* Left: Dog photo */}
               <div className="w-[48%] shrink-0">
                 <div className="border-2 border-navy/15 rounded-lg overflow-hidden">
@@ -95,7 +88,7 @@ export default function Pedigree() {
 
               {/* Right: QR code + Professional + Name */}
               <div className="flex-1 flex flex-col items-center justify-start pt-1">
-                <div className="p-1 border-2 border-green-700 rounded-md">
+                <div className="p-1.5 border-2 border-gold rounded-lg">
                   <QRCodeSVG value="https://alianz.org/pedigree/MX-2025-00847" size={64} />
                 </div>
                 <p className="text-gray-400 text-[9px] uppercase tracking-widest italic mt-3">Professional</p>
@@ -105,44 +98,74 @@ export default function Pedigree() {
               </div>
             </div>
 
-            {/* Official Family Tree — 3 generations left to right */}
+            {/* Official Family Tree — 3 generations left to right with branches */}
             <div className="mx-3 border-t border-gray-100 pt-2 pb-3">
               <h3 className="text-navy font-bold text-[9px] uppercase tracking-wider mb-2">Official Family Tree</h3>
 
-              <div className="flex items-center justify-between">
-                {/* Gen 1: The dog */}
-                <div className="flex flex-col items-center shrink-0">
+              {/* Tree with SVG branches */}
+              <div className="relative" style={{ height: 160 }}>
+                {/* SVG branch lines */}
+                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+                  {/* Gen1 → Sire */}
+                  <line x1="12%" y1="50%" x2="38%" y2="28%" stroke="#d4d4d4" strokeWidth="1.5" />
+                  {/* Gen1 → Dam */}
+                  <line x1="12%" y1="50%" x2="38%" y2="72%" stroke="#d4d4d4" strokeWidth="1.5" />
+                  {/* Sire → Sire's Sire */}
+                  <line x1="42%" y1="28%" x2="68%" y2="13%" stroke="#d4d4d4" strokeWidth="1.5" />
+                  {/* Sire → Sire's Dam */}
+                  <line x1="42%" y1="28%" x2="68%" y2="38%" stroke="#d4d4d4" strokeWidth="1.5" />
+                  {/* Dam → Dam's Sire */}
+                  <line x1="42%" y1="72%" x2="68%" y2="62%" stroke="#d4d4d4" strokeWidth="1.5" />
+                  {/* Dam → Dam's Dam */}
+                  <line x1="42%" y1="72%" x2="68%" y2="87%" stroke="#d4d4d4" strokeWidth="1.5" />
+                </svg>
+
+                {/* Gen 1: The dog — left */}
+                <div className="absolute" style={{ left: '2%', top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
                   <Circle src={tree.img} name={tree.name} size={38} />
                 </div>
 
-                {/* Connector */}
-                <div className="flex-1 flex items-center justify-center px-1">
-                  <div className="w-full border-t border-dashed border-gray-300" />
-                </div>
-
-                {/* Gen 2: Parents (Sire & Dam) */}
-                <div className="flex flex-col gap-1.5 shrink-0">
+                {/* Gen 2: Sire — middle top */}
+                <div className="absolute" style={{ left: '30%', top: '28%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
                   <Circle src={tree.sire.img} name={tree.sire.name} size={34} />
+                </div>
+                {/* Gen 2: Dam — middle bottom */}
+                <div className="absolute" style={{ left: '30%', top: '72%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
                   <Circle src={tree.dam.img} name={tree.dam.name} size={34} />
                 </div>
 
-                {/* Connector */}
-                <div className="flex-1 flex items-center justify-center px-1">
-                  <div className="w-full border-t border-dashed border-gray-300" />
-                </div>
-
-                {/* Gen 3: Grandparents */}
-                <div className="flex flex-col gap-1 shrink-0">
+                {/* Gen 3: Sire's Sire */}
+                <div className="absolute" style={{ left: '62%', top: '13%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
                   <Circle src={tree.sire.sire.img} name={tree.sire.sire.name} size={28} />
+                </div>
+                {/* Gen 3: Sire's Dam */}
+                <div className="absolute" style={{ left: '62%', top: '38%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
                   <Circle src={tree.sire.dam.img} name={tree.sire.dam.name} size={28} />
+                </div>
+                {/* Gen 3: Dam's Sire */}
+                <div className="absolute" style={{ left: '62%', top: '62%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
                   <Circle src={tree.dam.sire.img} name={tree.dam.sire.name} size={28} />
+                </div>
+                {/* Gen 3: Dam's Dam */}
+                <div className="absolute" style={{ left: '62%', top: '87%', transform: 'translate(-50%, -50%)', zIndex: 1 }}>
                   <Circle src={tree.dam.dam.img} name={tree.dam.dam.name} size={28} />
                 </div>
               </div>
             </div>
 
-            {/* Footer — text left, seal stamp right */}
-            <div className="bg-navy px-4 py-2.5 flex items-center justify-between">
+            {/* Seal stamp — big, bleeds up into white area */}
+            <div className="relative">
+              <img
+                src={img('images/seal-alianz.png')}
+                alt="Official Stamp"
+                className="absolute right-4 -top-10 w-20 h-20 object-contain opacity-30"
+                crossOrigin="anonymous"
+                style={{ zIndex: 2 }}
+              />
+            </div>
+
+            {/* Footer */}
+            <div className="bg-navy px-4 py-3 flex items-center justify-between relative" style={{ zIndex: 1 }}>
               <div>
                 <p className="text-gold font-serif text-sm italic">Alianz</p>
                 <p className="text-gray-400 text-[9px]">Official Stamp</p>
@@ -150,7 +173,7 @@ export default function Pedigree() {
               <img
                 src={img('images/seal-alianz.png')}
                 alt="Official Stamp"
-                className="h-10 w-10 object-contain opacity-80"
+                className="h-14 w-14 object-contain opacity-70"
                 crossOrigin="anonymous"
               />
             </div>
