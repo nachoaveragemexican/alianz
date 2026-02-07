@@ -21,7 +21,7 @@ const stats = [
 ]
 
 const menuItems = [
-  { label: 'Mis Pedigrees', icon: PawPrint, path: '/pedigree' },
+  { label: 'Mi Kennel', icon: PawPrint, path: '/kennel' },
   { label: 'Mis Certificaciones', icon: Award, path: '/universidad' },
   { label: 'Mis Eventos', icon: Calendar, path: '/eventos' },
   { label: 'Verificación Profesional', icon: Shield, path: null },
