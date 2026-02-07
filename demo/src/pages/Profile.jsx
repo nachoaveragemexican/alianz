@@ -34,7 +34,7 @@ export default function Profile() {
     <div className="h-full flex flex-col">
       <div className="flex-1 overflow-y-auto scroll-area bg-cream">
         {/* Profile header */}
-        <div className="bg-navy-gradient safe-top px-4 pt-4 pb-8 text-center">
+        <div className="bg-navy-gradient safe-top px-4 pt-8 pb-8 text-center">
           <img
             src={img('images/avatar-ricardo.jpg')}
             alt="Ricardo"
